@@ -1,0 +1,72 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
+import LeftSection from "@components/ui/blocks/LeftSection.astro";
+import RightSection from "@components/ui/blocks/RightSection.astro";
+
+import { SITE } from "@data/constants";
+import concessions from "@images/volunteer/concessions.jpg"
+import parent from "@images/volunteer/band_parent.jpg"
+import volunteer from "@images/volunteer/volunteer.webp"
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
+const pageTitle: string = `Voluntario | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bandboosters.org/es/volunteer",
+    "url": "https://bandboosters.org/es/volunteer",
+    "name": "Voluntario | Band Boosters",
+    "description":
+      "Explore diferentes formas en las que puede ofrecerse como voluntario para ayudar a los programas de banda del distrito.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://bandboosters.org/es",
+      "name": "Band Boosters",
+      "description":
+        "Una organización sin fines de lucro dirigida por padres cuyo propósito es apoyar todos los programas de banda en las escuelas del distrito.",
+    },
+    "inLanguage": "es"
+  }}
+>
+    <MainSection
+    title="Oportunidades de Voluntariado"
+    subTitle="Como Band Boosters, nos enorgullecemos de brindar a los programas de banda del distrito muchos servicios, como recaudación de fondos, refrigerios y asistencia para el montaje y desmontaje. Nuestros esfuerzos no serían suficientes si esto se hiciera solos, por eso siempre estamos buscando voluntarios que nos ayuden. ¡Mira las diferentes oportunidades a continuación!"
+    btnExists={false}
+    />
+
+    <LeftSection
+    title='Banda de Marcha "Roadie"'
+    subTitle='Una de nuestras mayores contribuciones a la banda de música es ayudarlos en sus competencias ayudándolos a descargar el remolque, proporcionarles agua, etc. Venga a las competencias no solo para ver actuar a sus hijos, sino también para ayudarlos a ellos y a sus compañeros de banda a hacer lo que mejor saben hacer. ¡Conviértete en un "Roadie" hoy!"'
+    btnExists={true}
+    btnTitle="Inscribirse"
+    btnURL={getRelativeLocaleUrl("es", "#")}
+    includeImg={true}
+    img={parent}
+    imgAlt="Los padres animando a sus hijos"
+    />
+    <RightSection
+    title='Trabajador de concesiones de fútbol americano'
+    subTitle="Durante la temporada de fútbol americano de la escuela secundaria, contamos con un puesto de comida para recaudar fondos adicionales para los programas de la banda. Si bien es posible que se pierda la presentación especial de medio tiempo de su hijo, él se lo agradecerá cuando pueda conseguir cañas o baquetas nuevas para su instrumento. ¡Regístrese para su turno hoy!"
+    btnExists={true}
+    btnTitle="Inscribirse"
+    btnURL={getRelativeLocaleUrl("es", "#")}
+    includeImg={true}
+    single={true}
+    imgOne={concessions}
+    imgOneAlt="Puesto de concesiones de la escuela secundaria"
+    />
+    <LeftSection
+    title="¿No ves algo que te guste?"
+    subTitle="¡Está bien! Asegúrese de volver a consultar aquí periódicamente durante el año escolar para ver qué nuevas oportunidades de voluntariado están disponibles."
+    btnExists={false}
+    includeImg={true}
+    img={volunteer}
+    imgAlt="Caja de donación"
+    />
+
+</MainLayout>

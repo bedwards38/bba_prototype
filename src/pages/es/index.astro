@@ -1,0 +1,81 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import FAQ from "@components/sections/misc/FAQ.astro";
+import heroImage from "@images/band-hero.webp";
+import faqs from "@data/es/faqs.json";
+import features from "@data/es/features.json";
+import featureImage from "@images/band-grand-view.jpg";
+import disney from "@images/disney.jpg";
+import trailer from "@images/trailer.jpg";
+import yamaha from "@images/yamaha_sparkley_snare.png";
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+---
+
+<MainLayout>
+  <HeroSection
+    title=`<span
+        class="text-purple-700 dark:text-purple-500">Asociación de Potenciadores de Bandas</span>`
+    subTitle="Apoyar todos los programas de banda en las escuelas del distrito para hacer que la música sea posible, emocionante y agradable."
+    primaryBtn="Empezar a ser Voluntario"
+    primaryBtnURL={getRelativeLocaleUrl("es", "volunteer")}
+    secondaryBtn="Impulsores de Contacto"
+    secondaryBtnURL={getRelativeLocaleUrl("es", "contact")}
+    withReview={false}
+    src={heroImage}
+    alt="Músicos de la banda de música de instituto"
+  />
+
+  <FeaturesGeneral
+    title="Sobre nosotros"
+    subTitle="Los potenciadores de banda son una organización sin fines de lucro dirigida por padres cuyo propósito es apoyar todos los programas de banda en las escuelas del distrito. Las reuniones se llevan a cabo cada tercer jueves del mes, generalmente en la sala de la banda del instituto. Recaudamos fondos durante todo el año, y algunos de nuestros favoritos anuales son las ventas de otoño para mamás y una noche de trivia de primavera. Siempre estamos buscando voluntarios y hemos enumerado oportunidades en nuestra página de voluntarios."
+    src={featureImage}
+    alt="Músicos de la banda de música de instituto"
+    features={features}
+  />
+
+  <FeaturesNavs
+    title=`Mire los emocionantes planes que están imaginando los <span class="text-purple-700 dark:text-purple-500">Band Boosters</span>.`
+    tabs={[
+      {
+        heading: "Tráiler Mejorado",
+        content:
+          "Permita que la banda de música de la escuela secundaria viaje con facilidad a sus competencias. Este nuevo remolque permitirá un mejor almacenamiento de instrumentos y uniformes, además de aumentar la cantidad que podemos transportar.",
+        svg: "tools",
+        src: trailer,
+        alt: "Un semirremolque blanco y sencillo.",
+        first: true,
+      },
+      {
+        heading: "Línea de Batería con Estilo",
+        content:
+          "'Ooo' y 'Aaah' en los nuevos y brillantes tambores morados para línea de batería de la escuela secundaria. Deshagámonos de los tambores viejos y poco atractivos y sorprendamos a la gente con una experiencia de batería nueva y mejorada.",
+        svg: "sparks",
+        src: yamaha,
+        alt: "Una caja Yamaha de color púrpura brillante",
+        second: true,
+      },
+      {
+        heading: "Viajes entretenidos",
+        content:
+          "Fuera con las aburridas llanuras del medio oeste y con las playas tropicales de Florida. Los Band Boosters están planeando un viaje al maravilloso Mundo Disney en los próximos años para recompensar a nuestros estudiantes por su arduo trabajo.",
+        svg: "mapPinColored",
+        src: disney,
+        alt: "Castillo de Walt Disney World",
+      },
+    ]}
+  />
+
+  <FAQ title="Preguntas<br />frecuentes" faqs={faqs} />
+
+  <HeroSectionAlt
+    title="Hagamos posible la música"
+    subTitle="Sin padres como nosotros, los programas de banda en el distrito no serían tan exitosos como lo son."
+    primaryBtn="Hacer una Donación"
+    primaryBtnURL={getRelativeLocaleUrl("es", "payments")}
+  />
+</MainLayout>

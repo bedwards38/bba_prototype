@@ -1,0 +1,30 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ContactSection from "@components/sections/misc/ContactSection.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Contact | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bandboosters.org/contact",
+    "url": "https://bandboosters.org/contact",
+    "name": "Contact Us | Band Boosters",
+    "description":
+      "Have questions or want to discuss ways to contribute? Reach out, and let's find the right chords to your song.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://bandboosters.org",
+      "name": "Band Boosters",
+      "description":
+        "A parent-led non-profit organization whose purpose is to support all the district's band programs.",
+    },
+    "inLanguage": "en-US"
+  }}
+>
+  <ContactSection />
+</MainLayout>

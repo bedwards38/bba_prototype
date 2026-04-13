@@ -1,0 +1,73 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
+import LeftSection from "@components/ui/blocks/LeftSection.astro";
+import RightSection from "@components/ui/blocks/RightSection.astro";
+import MarchingBandFeesModal from "@components/ui/forms/MarchingBandFeesModal.astro"
+import DonationModal from "@components/ui/forms/DonationModal.astro"
+import { SITE } from "@data/constants";
+import donations from "@images/volunteer/donations.jpg"
+import fees from "@images/fees.jpg"
+
+const pageTitle: string = `Payments | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bandboosters.org/payments",
+    "url": "https://bandboosters.org/payments",
+    "name": "Payments | Band Boosters",
+    "description":
+      "Want to donate or pay your student's marching band fees? Do it today through our online payment options, supported by PayPal!",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://bandboosters.org",
+      "name": "Band Boosters",
+      "description":
+        "A parent-led non-profit organization whose purpose is to support all the district's band programs.",
+    },
+    "inLanguage": "en-US"
+  }}
+>
+    <MainSection
+    title="Payments"
+    subTitle="One way we like to make it easier for parents and people of the community is by providing direct payment options on our website. All payments are guaranteed to be secure and are made possible by PayPal."
+    btnExists={false}
+    />
+
+    <RightSection
+    title='Marching Band Fees'
+    subTitle="No more writing checks, make an online payment for your student's Marching Band Fees today! You will be able to provide information about your student and specify the amount you wish to pay. This will enable us to ensure your student receives the proper credit."
+    btnExists={true}
+    btnTitle="Pay Now"
+    btnModal={true}
+    btnModalToggle="#hs-toggle-between-modals-marching-band-fees-modal"
+    includeImg={true}
+    single={true}
+    imgOne={fees}
+    imgOneAlt="Wooden blocks that spell out 'fees'"
+    />
+    <LeftSection
+    title="Make a Donation"
+    subTitle="Consider making a donation to assist the district's band programs in upgrading equipment, purchasing snacks, or designing concert programs. All donations will be used to help the students have the best experience possible in the band programs. You will be able to specify your donation amount, and provide a custom donation note that will be shared with the band students."
+    btnExists={true}
+    btnTitle="Donate Today"
+    btnModal={true}
+    btnModalToggle="#hs-toggle-between-modals-donation-modal"
+    includeImg={true}
+    img={donations}
+    imgAlt="Money in a glass jar"
+    />
+
+
+    <MarchingBandFeesModal/>
+    <DonationModal />
+</MainLayout>
+<script>
+  import "@preline/collapse/index.js";
+  import "@preline/overlay/index.js";
+  import "@preline/tooltip/index.js";
+</script>

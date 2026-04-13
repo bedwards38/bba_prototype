@@ -1,0 +1,25 @@
+{
+  "subTitle": "Pregúntanos cualquier cosa sobre nuestra organización y prácticas, nuestro objetivo es brindarte la mejor información",
+  "faqs": [
+    {
+      "question": "¿De qué maneras puedo contribuir a los programas de banda?",
+      "answer": "Ser voluntario en nuestros numerosos eventos es una excelente manera de contribuir. Las donaciones siempre son bienvenidas y pueden ayudar a cubrir las necesidades de los programas de la banda. ¡Obtenga más información sobre cómo ser voluntario en nuestras reuniones o haga clic en la pestaña Voluntario en la parte superior!"
+    },
+    {
+      "question": "¿Cuándo y dónde exactamente se llevan a cabo las reuniones de Band Boosters?",
+      "answer": "Las reuniones de Band Boosters tienen lugar cada tercer jueves del mes. Normalmente se ejecutan en la sala de bandas de la escuela secundaria, pero si necesitamos alterar la ubicación se anotará en el calendario de este sitio."
+    },
+    {
+      "question": "¿Puedo unirme a Band Boosters? ¿Cómo lo hago?",
+      "answer": "¡Absolutamente! Primero, comience asistiendo a nuestras reuniones mensuales y siendo voluntario en nuestros eventos. Si disfrutas esto, habla más con el presidente de Band Booster después de una reunión para presentar tu puesto."
+    },
+    {
+      "question": "¿Cómo hago un pago para mi estudiante?",
+      "answer": "¡Le permitimos realizar pagos para su estudiante aquí mismo en este sitio web! Simplemente haga clic en la pestaña Pagos y siga la información allí para completar su pago."
+    },
+    {
+      "question": "¿Qué tan actualizado está el horario en línea?",
+      "answer": "Nuestro objetivo es actualizar periódicamente nuestro calendario en línea para reflejar los eventos que ocurren con todos los programas de la banda. Si nota alguna discrepancia con el cronograma, no dude en comunicarse con nosotros e informarnos yendo a la pestaña Contacto en la parte superior de la página."
+    }
+  ]
+}

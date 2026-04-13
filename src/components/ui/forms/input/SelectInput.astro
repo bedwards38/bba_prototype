@@ -1,0 +1,42 @@
+---
+/*
+The 'options' property is used as follows:
+- The key of the item in the object is used as the "value" of the
+  option. This allows for the value of the item in the object to
+  be a properly formatted string which can be displayed to the user.
+
+*/
+
+const { label, id, options } = Astro.props;
+
+interface Props {
+  label?: string;
+  id: string;
+  options: Object;
+}
+
+const selectOptions = {
+  placeholder: `<span id=${id} class="truncate text-neutral-500 dark:text-neutral-400">${label}</span>`,
+  toggleTag: "<button type=\"button\" aria-expanded=\"false\"></button>",
+  toggleClasses: "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-3 ps-4 pe-9 flex gap-x-2 text-nowrap text-neutral-700 w-full cursor-pointer bg-neutral-50 border border-neutral-200 rounded-lg text-start text-sm focus:border-neutral-200 focus:outline-none focus:ring focus:ring-neutral-400 dark:bg-neutral-700/30 dark:border-neutral-600 dark:text-neutral-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-400",
+  dropdownClasses: "mt-2 z-50 w-full max-h-72 p-1 space-y-0.5 bg-neutral-50 border border-neutral-200 rounded-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-800 dark:opacity-100 dark:border-neutral-600",
+  optionClasses: "py-2 px-4 w-full text-sm text-neutral-500 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 dark:bg-neutral-700/30 dark:hover:bg-neutral-800 dark:text-neutral-300 dark:focus:bg-neutral-800",
+  optionTemplate: "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500 \" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>",
+  extraMarkup: "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-neutral-500 dark:text-neutral-300 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+ }
+const selectOptionsString = JSON.stringify(selectOptions);
+---
+<div>
+    <select data-hs-select={selectOptionsString} class="hidden">
+      <option value="">Choose</option>
+        {
+          Object.entries(options).map(([key, value]) => (
+              <option value={`${key}`}>{value}</option>
+          ))
+        }
+    </select>
+</div>
+
+<script>
+  import "@preline/select/index.js";
+</script>

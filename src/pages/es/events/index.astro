@@ -1,0 +1,75 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import CardSmall from "@components/ui/cards/CardSmall.astro";
+import CardWide from "@components/ui/cards/CardWide.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@data/constants";
+
+const events: CollectionEntry<"events">[] = (
+  await getCollection("events", ({ id }) => {
+    return id.startsWith("es/")
+  })
+).sort(
+  (a: CollectionEntry<"events">, b: CollectionEntry<"events">) =>
+    a.data.date.getTime() - b.data.date.getTime()
+);
+
+const title: string = "Próximos Eventos";
+const subTitle: string =
+  "Explora los próximos eventos que tienen tanto los programas de la banda como los impulsores de la banda. Cada evento tiene información más detallada, incluida la hora y el lugar en el que se lleva a cabo, lo que garantiza que tenga toda la información que necesita.";
+
+const pageTitle: string = `Eventos | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bandboosters.org/es/events",
+    "url": "https://bandboosters.org/es/events",
+    "name": "Eventos | Band Boosters",
+    "description": "Explora los próximos eventos que tienen tanto los programas de la banda como los impulsores de la banda.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://bandboosters.org/es",
+      "name": "Band Boosters",
+      "description": "Una organización sin fines de lucro dirigida por padres cuyo propósito es apoyar todos los programas de banda en las escuelas del distrito."
+    },
+    "inLanguage": "es"
+  }}
+>
+  <div
+    class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+  >
+    <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
+      <div class="flex items-center gap-12">
+        <h1
+          class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+        >
+          {title}
+        </h1>
+        {
+          subTitle && (
+            <p class="hidden max-w-screen-sm text-pretty text-neutral-600 dark:text-neutral-400 md:block">
+              {subTitle}
+            </p>
+          )
+        }
+      </div>
+    </div>
+    <section class="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
+      {
+        events.map((event, index) => {
+          const position = index % 4;
+          if (position === 0 || position === 3) {
+            return <CardSmall event={event} />;
+          } else {
+            return <CardWide event={event} />;
+          }
+        })
+      }
+    </section>
+  </div>
+</MainLayout>

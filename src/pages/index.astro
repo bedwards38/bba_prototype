@@ -1,0 +1,81 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import FAQ from "@components/sections/misc/FAQ.astro";
+import heroImage from "@images/band-hero.webp";
+import faqs from "@data/faqs.json";
+import features from "@data/features.json";
+import featureImage from "@images/band-grand-view.jpg";
+import disney from "@images/disney.jpg";
+import trailer from "@images/trailer.jpg";
+import yamaha from "@images/yamaha_sparkley_snare.png";
+
+---
+
+<MainLayout>
+
+  <HeroSection
+    title=`<span
+        class="text-purple-700 dark:text-purple-500">Band Boosters Association</span>`
+    subTitle="Supporting all band programs in the school district to make music possible, exciting, and enjoyable."
+    primaryBtn="Start Volunteering"
+    primaryBtnURL="/volunteer"
+    secondaryBtn="Contact Boosters"
+    secondaryBtnURL="/contact"
+    withReview={false}
+    src={heroImage}
+    alt="High School Marching Band Players"
+  />
+
+  <FeaturesGeneral
+    title="About us"
+    subTitle="The band boosters are a parent-led non-profit organization whose purpose is to support all the band programs in the school district. Meetings are held every third Thursday of the month, usually in the high school band room. We fundraise throughout the year, with some of our annual favorites being fall mum sales and a spring Trivia Night. We are always looking for volunteers and have listed opportunities on our Volunteer Page."
+    src={featureImage}
+    alt="High School Marching Band Players"
+    features={features}
+  />
+
+  <FeaturesNavs
+    title=`Look into the exciting plans the <span class="text-purple-700 dark:text-purple-500">Band Boosters</span> are envisioning.`
+    tabs={[
+      {
+        heading: "Improved Trailer",
+        content:
+          "Enable the high school marching band to travel with ease to their competitions. This new trailer will allow for better instrument and uniform storage, as well as increase the amount we can carry.",
+        svg: "tools",
+        src: trailer,
+        alt: "A plain, white semi-truck trailer",
+        first: true,
+      },
+      {
+        heading: "Stylish Drumline",
+        content:
+          "'Ooo' and 'Aaah' at new, sparkly, purple drums for the high school drumline. Let's get rid of the old, unappealing drums and stun people with a new and improved drumline experience.",
+        svg: "sparks",
+        src: yamaha,
+        alt: "A sparkly, purple Yamaha snare drum",
+        second: true,
+      },
+      {
+        heading: "Entertaining Travel",
+        content:
+          "Out with the boring midwest plains and in with tropical beaches of Florida. The Band Boosters are planning a trip to the wonderful Disney World in the coming years to reward our students for their hard work.",
+        svg: "mapPinColored",
+        src: disney,
+        alt: "Walt Disney World Castle",
+      },
+    ]}
+  />
+
+  <FAQ title="Frequently<br />asked questions" faqs={faqs} />
+
+  <HeroSectionAlt
+    title="Let's Make Music Possible"
+    subTitle="Without parents like us, the band programs in the district would not be as successful as they are."
+    primaryBtn="Make a Donation"
+    primaryBtnURL="/payments"
+  />
+</MainLayout>

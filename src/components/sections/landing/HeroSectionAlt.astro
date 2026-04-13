@@ -1,0 +1,101 @@
+---
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+
+const {
+  title,
+  subTitle,
+  primaryBtn,
+  primaryBtnURL,
+} = Astro.props;
+
+interface Props {
+  title: string;
+  subTitle?: string;
+  primaryBtn?: string;
+  primaryBtnURL?: string;
+}
+---
+
+<section
+  class="relative mx-auto max-w-[85rem] px-4 pb-24 pt-10 sm:px-6 lg:px-8"
+>
+  <div
+    class="absolute left-0 top-[55%] scale-90 md:top-[20%] xl:left-[10%] xl:top-[25%]"
+  >
+    <svg
+      width="64"
+      height="64"
+      fill="none"
+      stroke-width="0.25"
+      color="#A855F7"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="#A855F7"
+        stroke="#A855F7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M14 3H12V13.56A3.96 3.96 0 0 0 10 13A4 4 0 1 0 14 17V3M10 19A2 2 0 1 1 12 17A2 2 0 0 1 10 19M16.5 20A1.5 1.5 0 1 1 18 18.5A1.5 1.5 0 0 1 16.5 20Z"
+      ></path>
+    </svg>
+  </div>
+  <div class="absolute left-[85%] top-0 scale-75">
+    <svg
+      width="64"
+      height="64"
+      fill="none"
+      stroke-width=".95"
+      color="#C084FC"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="#C084FC"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M16,9V7H12V12.5C11.58,12.19 11.07,12 10.5,12A2.5,2.5 0 0,0 8,14.5A2.5,2.5 0 0,0 10.5,17A2.5,2.5 0 0,0 13,14.5V9H16M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2Z"
+      ></path>
+    </svg>
+  </div>
+  <div
+    class="absolute bottom-[5%] left-[60%] scale-[.6] xl:bottom-[15%] xl:left-[35%]"
+  >
+    <svg
+      width="64"
+      height="64"
+      fill="none"
+      stroke-width="1.5"
+      color="#a3a3a3"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="#a3a3a3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M18 18.5A1.5 1.5 0 1 1 16.5 17A1.5 1.5 0 0 1 18 18.5M18 7V3H12V13.55A4 4 0 1 0 14 17V11H18V8H14V7Z"
+      ></path>
+    </svg>
+  </div>
+  <div class="mx-auto mt-5 max-w-xl text-center">
+    <h2
+      class="block text-balance text-4xl font-bold leading-tight tracking-tight text-neutral-800 dark:text-neutral-200 md:text-5xl lg:text-6xl"
+    >
+      {title}
+    </h2>
+  </div>
+  <div class="mx-auto mt-5 max-w-3xl text-center">
+    {
+      subTitle && (
+        <p class="text-pretty text-lg text-neutral-600 dark:text-neutral-400">
+          {subTitle}
+        </p>
+      )
+    }
+  </div>
+  {
+    primaryBtn && (
+      <div class="mt-8 flex justify-center gap-3">
+        <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
+      </div>
+    )
+  }
+</section>

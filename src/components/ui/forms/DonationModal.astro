@@ -1,0 +1,115 @@
+---
+import TextInput from "./input/TextInput.astro";
+import PriceInput from "./input/PriceInput.astro";
+import EmailInput from "./input/EmailInput.astro";
+import PhoneInput from "./input/PhoneInput.astro";
+import PaypalButtonBlock from "../buttons/PaypalButtonBlock.astro";
+import Icon from "@components/ui/icons/Icon.astro";
+
+const modalStrings = Astro.currentLocale === "es" ?  {
+  firstName: "Nombre del Contacto",
+  lastName: "Apellido del Contacto",
+  companyName: "Nombre de Empresa",
+  email: "Correo Electrónico de Contacto",
+  phone: "Número de Teléfono de Contacto",
+  payment: "Cantidad a Donar"
+} : {
+  firstName: "First Name",
+  lastName: "Last Name",
+  companyName: "Company Name",
+  email: "Contact Email",
+  phone: "Contact Phone Number",
+  payment: "Amount to donate"
+};
+
+const config = Astro.currentLocale === "es" ?  {
+  id: "hs-toggle-between-modals-donation-modal",
+  title: "Hacer una Donación",
+  subTitle: "Dona a los programas de tu banda favorita",
+} : {
+  id: "hs-toggle-between-modals-donation-modal",
+  title: "Make a Donation",
+  subTitle: "Donate to your favorite band programs",
+};
+
+---
+
+<div
+  id={config.id}
+  class="hs-overlay fixed start-0 top-0 z-50 hidden h-full w-full hs-overlay-backdrop-open:hidden"
+>
+  <div
+    class="hs-overlay-animation-target m-3 mt-0 opacity-0 transition-all ease-in-out hs-overlay-open:mt-16 sm:hs-overlay-open:mt-32 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:mx-auto sm:w-full sm:max-w-lg"
+  >
+    <div class="mx-auto w-full max-w-md p-6">
+      <div
+        class="mt-7 rounded-xl border border-neutral-200 bg-neutral-100 shadow-sm dark:border-neutral-700 dark:bg-neutral-800"
+      >
+        <div class="flex justify-between items-center pt-2 px-4">
+            <div></div>
+            <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600" aria-label="Close" data-hs-overlay=`#${config.id}`>
+                <span class="sr-only">Close</span>
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="pt-2 pb-4 sm:p-7">
+          <div class="text-center">
+            <h2
+              class="block text-2xl font-bold text-neutral-800 dark:text-neutral-200"
+            >
+              {config.title}
+            </h2>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 hs-tooltip">
+                {config.subTitle}
+            </p>
+          </div>
+          <div class="my-2">
+            <div
+              class="flex items-center py-4 text-xs uppercase text-neutral-400 before:flex-[1_1_0%] before:border-t before:border-neutral-200 after:flex-[1_1_0%] after:border-t after:border-neutral-200 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600"
+            />
+            <form class="pt-2 px-4 sm:px-4">
+              <div class="grid gap-y-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <TextInput
+                    id="hs-firstname-contact-donate"
+                    label={modalStrings.firstName}
+                    name="hs-firstname-contact-donate"
+                  />
+                  <TextInput
+                    id="hs-lastname-contact-donate"
+                    label={modalStrings.firstName}
+                    name="hs-lastname-contact-donate"
+                  />
+                </div>
+                <TextInput
+                  id="hs-companyname-donate"
+                  label={modalStrings.companyName}
+                  name="hs-companyname-donate"
+                />
+                <EmailInput
+                  id="hs-email-contact-donate"
+                  label={modalStrings.email}
+                  errorId="hs-email-contact-donate-error"
+                />
+                <PhoneInput
+                  id="hs-phone-contact-donate"
+                  label={modalStrings.phone}
+                />
+                <PriceInput
+                  id="hs-price-donate"
+                  label={modalStrings.payment}
+                />
+                <div class="pt-2 z-20">
+                    <PaypalButtonBlock id="hs-donation-buttons" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

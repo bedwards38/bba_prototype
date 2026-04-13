@@ -1,0 +1,28 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ContactSection from "@components/sections/es/ContactSection_es.astro";
+---
+
+<MainLayout
+  title="Contacta con nosotros | Band Boosters"
+  lang="es"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://bandboosters.org/es/contact",
+    url: "https://bandboosters.org/es/contact",
+    name: "Contacta con nosotros | Band Boosters",
+    description:
+      "¿Tiene preguntas o quiere discutir formas de contribuir? Extiéndete y encontremos los acordes adecuados para tu canción.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://bandboosters.org/es/",
+      name: "Band Boosters",
+      description:
+        "Una organización sin fines de lucro dirigida por padres cuyo propósito es apoyar todos los programas de banda en las escuelas del distrito.",
+    },
+    inLanguage: "es",
+  }}
+>
+  <ContactSection />
+</MainLayout>
